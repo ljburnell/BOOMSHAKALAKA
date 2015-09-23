@@ -1,0 +1,309 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
+
+body { font-family: 'Raleway', sans-serif; }
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fade-in.one {
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.fade-in.two {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay:1.2s;
+  animation-delay: 1.2s;
+}
+
+.fade-in.three {
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+
+@media (max-width: 767px) {
+  .menu-respond a {
+    display: block;
+    line-height: 1em;
+    background: #666;
+    color: #FFF;
+  }
+  .menu-respond ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .menu-respond ul li {
+    margin: 0;
+    padding: 0;
+  }
+  .menu-respond ul li a {
+    padding: 14px 14px;
+  }
+  .menu-respond ul li ul li a {
+    background: #999;
+  }
+  .menu-respond ul li ul li ul li a {
+    background: #BBB;
+  }
+  .menu-respond ul > li.selected > a {
+    background: #428BCA;
+  }
+  .menu-collapse {
+    display: none;
+  }
+  .menu-toggle {
+    position: relative;
+    padding: 18px 49px 18px 14px;
+  }
+  .menu-toggle span {
+    position: absolute;
+    top: 50%;
+    right: 29px;
+    display: block;
+    margin-top: -1px;
+    width: 20px;
+    height: 3px;
+    background: #fff;
+  }
+  .menu-toggle span:before,
+  .menu-toggle span:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transition: transform 0.3s;
+  }
+  .menu-toggle span:before {
+    top: -8px;
+    transform: rotate(0);
+  }
+  .menu-toggle span:after {
+    bottom: -8px;
+    transform: rotate(0);
+  }
+  .menu-toggle.open span {
+    background: #666;
+  }
+  .menu-toggle.open span:before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  .menu-toggle.open span:after {
+    bottom: 0;
+    transform: rotate(225deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none !important;
+  }
+  .menu-toggle.visible {
+    display: block !important;
+  }
+  .menu-collapse {
+    display: block !important;
+    float: right;
+  }
+}
+
+@media (min-width: 768px) {
+  .mainmenu-wrap {
+    background: #FFF;
+    height: 100px;
+  }
+  .mainmenu li {
+    position: relative;
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+  .mainmenu li a {
+    display: inline-block;
+    margin: 0;
+    padding: 10px 20px;
+    line-height: 66px;
+    background: none;
+    color: #666;
+    letter-spacing: 2px;
+  }
+  .mainmenu li a.selected {
+    padding-bottom: 0;
+    background: none !important;
+  }
+  .mainmenu li:hover a,
+  .mainmenu li:focus a {
+    background: none;
+    text-decoration: none;
+  }
+  .mainmenu li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 3px;
+    padding-left: 0;
+    z-index: 200;
+    margin: 0 0 0 0;
+    min-width: 180px;
+  }
+  .mainmenu li ul li {
+    display: block;
+  }
+  .mainmenu li ul li a {
+    display: block;
+    margin: 0;
+    padding: 12px 10px;
+    border-radius: 0;
+    line-height: 1em;
+    font-size: em(13);
+  }
+  .mainmenu li ul li a:hover,
+  .mainmenu li ul li a:focus {
+    text-decoration: none;
+  }
+  .mainmenu li:last-child ul {
+    right: 0;
+    left: auto;
+  }
+  .mainmenu li:hover ul,
+  .mainmenu li:focus ul {
+    display: block;
+  }
+}
+
+.mainmenu li a:after { content:''; position:absolute; bottom:-15px; left:50%; opacity:0; border-radius:50%; width:7px; height:7px; background:#000; -webkit-transform:translate(-50%, -10px); -moz-transform:translate(-50%, -10px); -ms-transform:translate(-50%, -10px); transform:translate(-50%, -10px); -webkit-transition: opacity 0.3s, -webkit-transform 0.3s ease-out; -moz-transition:opacity 0.3s, -moz-transform 0.3s ease-out; -ms-transition:opacity 0.3s, -ms-transform 0.3s ease-out; transition:opacity 0.3s, transform:0.3s ease-out; }
+.mainmenu li:hover a:after, 
+.mainmenu li:focus a:after { opacity:1; -webkit-transform:translate(-50%, 0); -moz-transform:translate(-50%, 0); -ms-transform:translate(-50%, 0); transform:translate(-50%, 0); }
+
+
+.title-area { float: left; height: 86px; }
+.title-area li { list-style: none; }
+.title-area li a { color: #000; text-transform: uppercase; letter-spacing: 2px; }
+
+section#main { min-height: 448px; }
+
+ul.gallery { padding: 0; }
+ul.gallery li { list-style: none; }
+ul.gallery li.portfolioItem { display: block; width: 25%; float: left; }
+
+ul.gallery li img {
+  width: 100%;
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+ul.gallery li a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+ul.gallery li a .overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  background: rgba(34, 34, 34, 0.8);
+  width: 100%;
+  height: 100%;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+ul.gallery li a .overlay .thumb-info {
+  top: 55%;
+  position: relative;
+  opacity: 0;
+}
+
+
+ul.gallery li a h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+ul.gallery li a p {
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+ul.gallery li a:hover {
+  overflow: hidden;
+}
+
+ul.gallery li a:hover .overlay {
+  overflow: hidden;
+  opacity: 1;
+}
+
+ul.gallery li a:hover .overlay .thumb-info {
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  position: relative;
+  top: 50%;
+  margin-top: -26px;
+  opacity: 1;
+}
+
+ul.gallery li a:hover img {
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  margin-bottom: 0;
+}
+
+ul.gallery li.hidden {
+  opacity: 0.1;
+}
+
+footer { background: #333; padding: 50px 0; text-align: right; }
+
+.footer a i {
+    width: 40px;
+    height: 40px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    background: #eee;
+    color: #333;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 4rem;
+    margin: 0 8px;
+}
+
